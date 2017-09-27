@@ -26,7 +26,25 @@ class LinkedList {
 
     tail() {}
 
-    at(index) {}
+     at(index) {//searchNodeAt(position)ищет узел на n-ой позиции в списке
+    var currentNode = this.head,
+        length = this.length,
+        count = 1,
+        message = {failure: 'Failure: non-existent node in this list.'};
+
+    // 1-ый случай: неверная позиция 
+      if (length === 0 || position < 1 || position > length) {
+        throw new Error(message.failure);
+      }
+
+    // 2-ой случай: верная позиция 
+      while (count < position) {
+        currentNode = currentNode.next;
+        count++;
+      }
+
+      return currentNode;
+    }
 
     insertAt(index, data) {}
 
