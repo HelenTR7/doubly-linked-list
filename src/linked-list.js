@@ -22,7 +22,11 @@ class LinkedList {
       this.length++;
       return node;
     }
-    head() {}
+       head() {
+        var data=0;
+        data=this.head;
+        return data;
+    }
 
     tail() {}
 
