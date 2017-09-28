@@ -3,39 +3,40 @@ const Node = require('./node');
 class LinkedList {
     constructor(length=0, head=null,tail=null) {
         this.length=length;//извлекает кол-во узлов в списке
-        this.head=head;//назначает узел в качестве головного эл-та списка
-        this.tail=tail;//назначает узел в качестве конечного элемента списка
+        this._head=head;//назначает узел в качестве головного эл-та списка
+        this._tail=tail;//назначает узел в качестве конечного элемента списка
     }
 
-
-    append(data) {//add(value)добавляет узел в список
-      var node = new Node(data);
+     append(data) {//добавляет узел в список
+      var node = new Node(data);//берем значение помещенное
 
       if(this.length){
-        this.tail.next=node;
-        node.prev=this.tail;
-        this.tail=node;
+        this._tail.next=node;
+        node.prev=this._tail;
+        this._tail=node;
       }else{
-        this.head=node;
-        this.tail=node;
+        this._head=node;
+        this._tail=node;
       }
       this.length++;
       return node;
     }
-       head() {
-        var data=0;
-        data=this.head;
-        return data;
+    head() {
+      return this._head.data;
     }
 
-    tail() {}
+    tail() {
+      return this._tail.data;
+    }
 
      at(index) {
     }
 
     insertAt(index, data) {}
 
-    isEmpty() {}
+    isEmpty() {
+      return this._head ===null;
+    }
 
     clear() {}
 
