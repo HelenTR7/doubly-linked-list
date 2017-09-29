@@ -29,7 +29,17 @@ class LinkedList {
       return this._tail.data;
     }
 
-     at(index) {
+    at(index) {
+        var currentNode = this._head;
+        var count=0;        
+        while(count<index)
+        { 
+          currentNode = currentNode.next;
+          count++;
+        }
+        return currentNode.data;
+                  
+
     }
 
     insertAt(index, data) {}
