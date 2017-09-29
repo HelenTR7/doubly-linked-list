@@ -50,7 +50,58 @@ class LinkedList {
 
     clear() {}
 
-    deleteAt(index) {}
+    deleteAt(index) {
+     var currentNode = this._head;//this.head
+        var length = this.length;//this._length
+        var count = 1;
+        var message = {failure: 'Failure: non-existent node in this list.'};
+        var beforeNodeToDelete = null;
+        var afterNodeToDelete=null;
+        var nodeToDelete = null;
+        var deletedNode = null;
+    // 1-ый случай: неверная позиция
+    if (length === 0 || index < 1 || index > length) {
+        throw new Error(message.failure);
+    }
+
+    // 2-ой случай: первый узел удален
+    if (index === 1) {
+        this._head = currentNode.next;
+
+        // 2-ой случай: существует второй узел
+        if (!this._head) {//this.head
+            this._head.prev = null;//this.head
+        // 2-ой случай: второго узла не существует
+        } else {
+            this._tail = null;//this.tail
+        }
+
+    // 3-ий случай: последний узел удален
+    } else if (index === this.length) {
+        this._tail = this.tail.previous;
+        this._tail.next = null;
+    // 4-ый случай: средний узел удален
+    } else { 
+        while (count < index) { 
+            currentNode = currentNode.next;
+            count++;
+        }
+
+        beforeNodeToDelete = currentNode.prev;
+        nodeToDelete = currentNode;
+        afterNodeToDelete = currentNode.next;
+        beforeNodeToDelete.next = afterNodeToDelete;
+        afterNodeToDelete.prev = beforeNodeToDelete;
+        deletedNode = nodeToDelete;
+        nodeToDelete = null;
+    }
+
+    this._length--;
+
+    return message.success;
+
+
+    }
 
     reverse() {}
 
