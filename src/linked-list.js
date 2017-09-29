@@ -42,7 +42,21 @@ class LinkedList {
 
     }
 
-    insertAt(index, data) {}
+    insertAt(index, data) {
+    
+        var currentNode = this._head;//this.head
+        var length = this.length;//this._length
+        var count = 1;
+        var message = {failure: 'Failure: non-existent node in this list.'};
+        var newNode = data;
+        while (count < index) { 
+            currentNode = currentNode.next;
+            count++;
+        }
+        currentNode.next.data=newNode;
+        
+    return message.success;
+    }
 
     isEmpty() {
       return this._head ===null;
@@ -78,7 +92,7 @@ class LinkedList {
 
     // 3-ий случай: последний узел удален
     } else if (index === this.length) {
-        this._tail = this.tail.previous;
+        this._tail = this.tail.prev;
         this._tail.next = null;
     // 4-ый случай: средний узел удален
     } else { 
