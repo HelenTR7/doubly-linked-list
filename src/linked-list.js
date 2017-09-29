@@ -62,7 +62,11 @@ class LinkedList {
       return this._head ===null;
     }
 
-    clear() {}
+    clear() {
+            this._head.data=null;
+        this._tail.data=null;
+        this.length=0;
+    }
 
     deleteAt(index) {
      var currentNode = this._head;//this.head
