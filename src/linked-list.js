@@ -122,17 +122,7 @@ class LinkedList {
     }
 
     reverse() {   		
-        this._head = this._tail;
-	    var currentNode = this._head;
-    	for (var i = 0; i < this.length - 1; i++) 
-        {
-    	this.reverseLinks(currentNode);
-    	currentNode = currentNode.next;
-    	}
-    	this.reverseLinks(currentNode);
-        this._tail = currentNode;
-    	}
-    	return this;
+
     }
 
     indexOf(data) {
