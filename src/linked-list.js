@@ -44,8 +44,8 @@ class LinkedList {
 
     insertAt(index, data) {
     
-        var currentNode = this._head;//this.head
-        var length = this.length;//this._length
+        var currentNode = this._head;
+        var length = this.length;
         var count = 1;
         var message = {failure: 'Failure: non-existent node in this list.'};
         var newNode = data;
@@ -69,8 +69,8 @@ class LinkedList {
     }
 
     deleteAt(index) {
-     var currentNode = this._head;//this.head
-        var length = this.length;//this._length
+     var currentNode = this._head;
+        var length = this.length;
         var count = 1;
         var message = {failure: 'Failure: non-existent node in this list.'};
         var beforeNodeToDelete = null;
@@ -87,11 +87,11 @@ class LinkedList {
         this._head = currentNode.next;
 
         // 2-ой случай: существует второй узел
-        if (!this._head) {//this.head
-            this._head.prev = null;//this.head
+        if (!this._head) {
+            this._head.prev = null;
         // 2-ой случай: второго узла не существует
         } else {
-            this._tail = null;//this.tail
+            this._tail = null;
         }
 
     // 3-ий случай: последний узел удален
@@ -121,7 +121,19 @@ class LinkedList {
 
     }
 
-    reverse() {}
+    reverse() {   		
+        this._head = this._tail;
+	    var currentNode = this._head;
+    	for (var i = 0; i < this.length - 1; i++) 
+        {
+    	this.reverseLinks(currentNode);
+    	currentNode = currentNode.next;
+    	}
+    	this.reverseLinks(currentNode);
+        this._tail = currentNode;
+    	}
+    	return this;
+    }
 
     indexOf(data) {
         var currentNode = this._head;
